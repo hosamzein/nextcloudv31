@@ -2,8 +2,7 @@
 set -euo pipefail
 
 # =========================
-# Nextcloud fully-automated installer
-# (no prompts, no pause)
+# Nextcloud fully-automated installer (no prompts)
 # Based on your attached instructions.xlsx sequence
 # =========================
 
@@ -20,11 +19,9 @@ DB_PASS="clouddbadminP@ssw0rd"    # Change in production
 TIMEZONE="Africa/Cairo"
 
 # =========================
-# 1) System update/upgrade
+# 1) System update/full-upgrade + cleanup (as requested)
 # =========================
-apt-get update -y
-apt-get upgrade -y
-apt-get autoremove -y
+sudo apt-get update -y && sudo apt-get full-upgrade -y && sudo apt clean && sudo apt-get autoremove -y && sudo apt autoclean
 
 # =========================
 # 2) Install MariaDB
